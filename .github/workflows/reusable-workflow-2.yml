@@ -1,0 +1,8 @@
+name: Deploy App
+on: workflow_call
+jobs:
+  deploy:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Output information
+        run: echo "Deploying & Uploading ..."

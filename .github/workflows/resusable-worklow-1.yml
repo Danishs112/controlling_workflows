@@ -1,0 +1,22 @@
+name: Reusable Workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm ci
+      - name: Build dependencies
+        run: npm run build
+  deploy:
+    needs: build
+    uses: ./.github/workflows/reusable-workflow-2.yml
