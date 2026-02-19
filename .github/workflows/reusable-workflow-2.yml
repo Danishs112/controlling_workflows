@@ -1,8 +1,21 @@
 name: Deploy App
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      artifacts-name:
+        description: The name of the dployable artifact files
+        required: false
+        default: dist
+        type: string
 jobs:
   deploy:
     runs-on: ubuntu-lastest
     steps:
+      - name: Get Code
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifacts-name }}
+      - name: List files
+        run: ls
       - name: Output information
         run: echo "Deploying & Uploading ..."
