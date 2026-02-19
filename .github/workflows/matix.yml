@@ -10,8 +10,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        node-version: [10, 14, 18]
-        os-version: [ubuntu-latest, window-lastes]
+        node-version: [12, 14, 18]
+        os-version: [ubuntu-latest, window-lastest]
     runs-on: ${{ matrix.os-version }}
     steps:
       - name: Get Code
